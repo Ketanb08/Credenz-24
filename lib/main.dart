@@ -320,16 +320,4 @@ class CardWidget extends StatelessWidget {
   }
 }
 
-class DetailPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Detail Page'),
-      ),
-      body: Center(
-        child: Text('This is the detail page.'),
-      ),
-    );
-  }
-}
+

@@ -1,6 +1,7 @@
 import 'package:credenz/menu_screen.dart';
 import 'package:credenz/nontech.dart';
 import 'package:credenz/tech.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   late PageController pageController;
   double value = 0;
+  bool nav = true;
   @override
   void initState() {
     super.initState();
@@ -45,63 +47,151 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
+    return value== 0 ? Scaffold(
       body: PageView(
         controller: pageController,
         children: [
           Stack(
             children: [
               SafeArea(
-                  child: Container(
-                      child: Column(
-                      crossAxisAlignment:CrossAxisAlignment.start,
-                        children: [
-                          Text("PISB",style: TextStyle(fontSize: screenHeight*0.015),)
-                        ],
-                ),
-              )),
+                  child: Stack(
+                    children: [
+                      Container(
+                            decoration:BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Color(0xFF045AAB),Color(0xFF131321)],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                  ),
+                                ),
+                            child: Center(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                    SizedBox(height: screenHeight * 0.07),
+                                Text(
+                                  'Credenz',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: screenWidth * 0.09,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                    ],
+                                ),
+                            ),
+                      ),
+                        Positioned(
+                          top: screenHeight*0.18,
+                          child: Container(
+                            height: screenHeight*0.8,
+                          child: Column(
+                            crossAxisAlignment:CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.bookmark,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("PISB",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*0.03,),
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.inbox_outlined,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("PING",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*0.03,),
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.currency_rupee,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("Sponsors",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*0.03,),
+                              Container(
+                                width: screenWidth*0.8,
+                                  child: Divider(thickness: screenWidth*0.01,color: Colors.white60,)),
+                              SizedBox(height: screenHeight*0.03,),
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.calendar_today,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("Sessions",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*0.03,),
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.contact_support,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("Contact Us",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*0.03,),
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.developer_mode,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("Developers",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*0.03,),
+                              Container(
+                                  width: screenWidth*0.8,
+                                  child: Divider(thickness: screenWidth*0.01,color: Colors.white60,)),
+                              SizedBox(height: screenHeight*0.03,),
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.privacy_tip,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("Privacy Policy",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(height: screenHeight*0.03,),
+                              Row(
+                                children: [
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Icon(Icons.login,color: Colors.white,),
+                                  SizedBox(width: screenWidth*0.07,),
+                                  Text("Login",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                ],
+                              ),
+
+                            ],
+                          ),
+                                                ),
+                        ),
+                    ],
+                  )),
               TweenAnimationBuilder(
                   tween: Tween<double>(begin:0,end: value),
                   duration: Duration(milliseconds: 200),
                   curve:Curves.easeIn,
                   builder: (_,double val,__){
                     double scaleFactor = 1 ;
-                    if(1-val >0.8) {
+                    if(1-val >0.65) {
                       scaleFactor = 1-val;
                     }else{
-                      scaleFactor = 0.8;
+                      scaleFactor = 0.65;
                     }
                     return (Transform(
                       alignment: Alignment.center,
                         transform: Matrix4.identity()
                             ..setEntry(3,2,0.001)
-                            ..setEntry(0,3,200*val)
-                            ..rotateY((pi/6)*val),
+                            ..setEntry(0,3,150*val)
+                            ..setEntry(1,3,40*val)
+                            ..rotateY((pi/10)*val),
                               child:Center(
                                 child: Transform.scale(
                                   scale: scaleFactor,
@@ -249,13 +339,260 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
+      )
+    ) :Scaffold(
+        body: PageView(
+          controller: pageController,
+          children: [
+            Stack(
+              children: [
+                SafeArea(
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration:BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFF045AAB),Color(0xFF131321)],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(height: screenHeight * 0.07),
+                                Text(
+                                  'Credenz',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: screenWidth * 0.09,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: screenHeight*0.18,
+                          child: Container(
+                            height: screenHeight*0.8,
+                            child: Column(
+                              crossAxisAlignment:CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.bookmark,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("PISB",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight*0.03,),
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.inbox_outlined,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("PING",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight*0.03,),
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.currency_rupee,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("Sponsors",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight*0.03,),
+                                Container(
+                                    width: screenWidth*0.8,
+                                    child: Divider(thickness: screenWidth*0.01,color: Colors.white60,)),
+                                SizedBox(height: screenHeight*0.03,),
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.calendar_today,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("Sessions",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight*0.03,),
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.contact_support,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("Contact Us",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight*0.03,),
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.developer_mode,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("Developers",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight*0.03,),
+                                Container(
+                                    width: screenWidth*0.8,
+                                    child: Divider(thickness: screenWidth*0.01,color: Colors.white60,)),
+                                SizedBox(height: screenHeight*0.03,),
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.privacy_tip,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("Privacy Policy",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight*0.03,),
+                                Row(
+                                  children: [
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Icon(Icons.login,color: Colors.white,),
+                                    SizedBox(width: screenWidth*0.07,),
+                                    Text("Login",style: TextStyle(fontSize: screenHeight*0.019,color: Colors.white),),
+                                  ],
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
+                TweenAnimationBuilder(
+                    tween: Tween<double>(begin:0,end: value),
+                    duration: Duration(milliseconds: 200),
+                    curve:Curves.easeIn,
+                    builder: (_,double val,__){
+                      double scaleFactor = 1 ;
+                      if(1-val >0.65) {
+                        scaleFactor = 1-val;
+                      }else{
+                        scaleFactor = 0.65;
+                      }
+                      return (Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.identity()
+                          ..setEntry(3,2,0.001)
+                          ..setEntry(0,3,150*val)
+                          ..setEntry(1,3,20*val)
+                          ..rotateY((pi/9)*val),
+                        child:Center(
+                          child: Transform.scale(
+                            scale: scaleFactor,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage('assets/images/background.jpeg'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: screenHeight * 0.1),
+                                        Text(
+                                          'Credenz 24',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: screenWidth * 0.09,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: screenHeight * 0.15,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height: screenHeight * 0.25,
+                                              width: screenWidth * 0.4,
+                                              child: CardWidget(
+                                                logo: AssetImage('assets/images/monitor.png'),
+                                                eventName: 'Tech\nEvents',
+                                                color1: Color.fromRGBO(1, 93, 180, 0.5),
+                                                color2: Color.fromRGBO(1, 37, 84, 1),
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) => TechEventsPage(),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                            SizedBox(height: screenHeight * 0.02),
+                                            Container(
+                                              height: screenHeight * 0.25,
+                                              width: screenWidth * 0.4,
+                                              child: CardWidget(
+                                                logo: AssetImage('assets/images/web.png'),
+                                                eventName: 'Non Tech\nEvents',
+                                                color1: Color.fromRGBO(1, 93, 180, 0.2),
+                                                color2: Color.fromRGBO(1, 10, 23, 1),
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) => NonTechEventsPage(),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: MediaQuery.of(context).size.height * 0.055,
+                                  left: MediaQuery.of(context).size.height * 0.015,
+                                  child: Builder(
+                                      builder: (BuildContext context) {
+                                        return IconButton(
+                                          icon: ImageIcon(
+                                            AssetImage('assets/icons/menu.png'),
+                                            color: Colors.white,
+                                            size: MediaQuery.of(context).size.height * 0.032,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              value == 0 ? value = 1:value =0;
+                                            });
+                                          },
+                                        );
+                                      }
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ));
+                    }),
+
+              ],
+            ),
+          ],
+        ),
     );
   }
 }
-
-
-
 
 class CardWidget extends StatelessWidget {
   final AssetImage logo;

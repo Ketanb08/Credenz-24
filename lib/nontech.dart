@@ -89,8 +89,6 @@ class _NonTechEventsPageState extends State<NonTechEventsPage> {
   }
 }
 
-// Other widget classes (CombinedEventCard, revCombinedEventCard, EventCard) remain unchanged
-
 class CombinedEventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -109,44 +107,145 @@ class CombinedEventCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.4,
-              right: MediaQuery.of(context).size.width * 0.1,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(1, 93, 180, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-              eventimgsrc: "assets/images/events/nth.png",
-            ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "RC",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  // right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(4, 90, 171, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/wallstreet.png",
+                ),
+              ),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.1,
-              right: MediaQuery.of(context).size.width * 0.45,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(4, 90, 171, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-              eventimgsrc: "assets/images/events/bplan.png",
-            ),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  right: MediaQuery.of(context).size.width * 0.05,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(1, 93, 180, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/bplan.png",
+                ),
+              ),
+              Container(
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "Clash",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.4,
-              right: MediaQuery.of(context).size.width * 0.1,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(2, 65, 125, 0.7),
-              color2: Color.fromRGBO(2, 28, 61, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-              eventimgsrc: "assets/images/events/wallstreet.png",
-            ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "RC",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  // right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(4, 90, 171, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/nth.png",
+                ),
+              ),
+            ],
           ),
         ],
       ),
+      // child: Column(
+      //   children: [
+      //     Container(
+      //       padding: EdgeInsets.only(
+      //         left: MediaQuery.of(context).size.width * 0.4,
+      //         right: MediaQuery.of(context).size.width * 0.1,
+      //       ),
+      //       child: EventCard(
+      //         color1: Color.fromRGBO(1, 93, 180, 0.7),
+      //         color2: Color.fromRGBO(1, 37, 84, 0.7),
+      //         width: MediaQuery.of(context).size.width * 0.4,
+      //         eventimgsrc: "assets/images/events/datawiz.png",
+      //       ),
+      //     ),
+      //     Container(
+      //       padding: EdgeInsets.only(
+      //         left: MediaQuery.of(context).size.width * 0.1,
+      //         right: MediaQuery.of(context).size.width * 0.45,
+      //       ),
+      //       child: EventCard(
+      //         color1: Color.fromRGBO(4, 90, 171, 0.7),
+      //         color2: Color.fromRGBO(1, 37, 84, 0.7),
+      //         width: MediaQuery.of(context).size.width * 0.4,
+      //         eventimgsrc: "assets/images/events/enigma.png",
+      //       ),
+      //     ),
+      //     Container(
+      //       padding: EdgeInsets.only(
+      //         left: MediaQuery.of(context).size.width * 0.4,
+      //         right: MediaQuery.of(context).size.width * 0.1,
+      //       ),
+      //       child: EventCard(
+      //         color1: Color.fromRGBO(2, 65, 125, 0.7),
+      //         color2: Color.fromRGBO(2, 28, 61, 0.7),
+      //         width: MediaQuery.of(context).size.width * 0.4,
+      //         eventimgsrc: "assets/images/events/web-weaver.png",
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
@@ -210,41 +309,102 @@ class revCombinedEventCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.1,
-              right: MediaQuery.of(context).size.width * 0.45,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(1, 93, 180, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-              eventimgsrc: "assets/images/events/wallstreet.png",
-            ),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  right: MediaQuery.of(context).size.width * 0.05,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(1, 93, 180, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/quiz.png",
+                ),
+              ),
+              Container(
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "Clash",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.4,
-              right: MediaQuery.of(context).size.width * 0.1,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(4, 90, 171, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-              eventimgsrc: "assets/images/events/quiz.png",
-            ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "RC",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  // right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(4, 90, 171, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/rc.png",
+                ),
+              ),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.1,
-              right: MediaQuery.of(context).size.width * 0.45,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(2, 65, 125, 0.7),
-              color2: Color.fromRGBO(2, 28, 61, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-              eventimgsrc: "assets/images/events/enigma.png",
-            ),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  // right: MediaQuery.of(context).size.width * 0.45,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(2, 65, 125, 0.7),
+                  color2: Color.fromRGBO(2, 28, 61, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/cretonix.png",
+                ),
+              ),
+              Container(
+                // color: Colors.black,
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "Cretonix",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

@@ -1,12 +1,37 @@
-import 'dart:ui';
-
-import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
-class NonTechEventsPage extends StatelessWidget {
+class NonTechEventsPage extends StatefulWidget {
+  @override
+  _NonTechEventsPageState createState() => _NonTechEventsPageState();
+}
+
+class _NonTechEventsPageState extends State<NonTechEventsPage> {
+  PageController _pageController = PageController();
+  Color _containerColor = Color.fromRGBO(7, 14, 71, 1);
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(_onPageChanged);
+  }
+
+  @override
+  void dispose() {
+    _pageController.removeListener(_onPageChanged);
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onPageChanged() {
+    setState(() {
+      int currentPage = _pageController.page?.round() ?? 0;
+      // Adjust color based on current page or any other logic
+      _containerColor = currentPage % 2 == 0
+          ? Color.fromRGBO(7, 14, 71, 1)
+          : Color.fromRGBO(5, 10, 52, 1);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,24 +49,14 @@ class NonTechEventsPage extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromRGBO(7, 14, 71, 1),
-                        Color.fromRGBO(11, 22, 59, 1)
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
-                  ),
-                  // color: Colors.black,
+                  color: _containerColor,
                   width: MediaQuery.of(context).size.height * 1,
                   padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.1,
                   ),
                   child: Center(
                     child: Text(
-                      "Non-Tech Events",
+                      "Non Tech Events",
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white,
@@ -51,9 +66,9 @@ class NonTechEventsPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  // color: Colors.black,
                   height: MediaQuery.of(context).size.height * 0.8,
                   child: PageView.builder(
+                    controller: _pageController,
                     scrollDirection: Axis.vertical,
                     itemCount: 2,
                     itemBuilder: (context, index) {
@@ -64,24 +79,10 @@ class NonTechEventsPage extends StatelessWidget {
                       }
                     },
                   ),
-                )
+                ),
               ],
-              // top: MediaQuery.of(context).size.height * 0.1,
-              // left: 0,
-              // right: 0,
-              // child: Center(
-              //   child:
-              // ),
             ),
           ),
-          // Positioned(
-          //   child: ListView.builder(
-          //     itemCount: 2,
-          //     itemBuilder: (context, index) {
-          //       return CombinedEventCard();
-          //     },
-          //   ),
-          // ),
         ],
       ),
     );
@@ -106,41 +107,145 @@ class CombinedEventCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.4,
-              right: MediaQuery.of(context).size.width * 0.1,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(1, 93, 180, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-            ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "RC",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  // right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(4, 90, 171, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/wallstreet.png",
+                ),
+              ),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.1,
-              right: MediaQuery.of(context).size.width * 0.45,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(4, 90, 171, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-            ),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  right: MediaQuery.of(context).size.width * 0.05,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(1, 93, 180, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/bplan.png",
+                ),
+              ),
+              Container(
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "Clash",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.4,
-              right: MediaQuery.of(context).size.width * 0.1,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(2, 65, 125, 0.7),
-              color2: Color.fromRGBO(2, 28, 61, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-            ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "RC",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  // right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(4, 90, 171, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/nth.png",
+                ),
+              ),
+            ],
           ),
         ],
       ),
+      // child: Column(
+      //   children: [
+      //     Container(
+      //       padding: EdgeInsets.only(
+      //         left: MediaQuery.of(context).size.width * 0.4,
+      //         right: MediaQuery.of(context).size.width * 0.1,
+      //       ),
+      //       child: EventCard(
+      //         color1: Color.fromRGBO(1, 93, 180, 0.7),
+      //         color2: Color.fromRGBO(1, 37, 84, 0.7),
+      //         width: MediaQuery.of(context).size.width * 0.4,
+      //         eventimgsrc: "assets/images/events/datawiz.png",
+      //       ),
+      //     ),
+      //     Container(
+      //       padding: EdgeInsets.only(
+      //         left: MediaQuery.of(context).size.width * 0.1,
+      //         right: MediaQuery.of(context).size.width * 0.45,
+      //       ),
+      //       child: EventCard(
+      //         color1: Color.fromRGBO(4, 90, 171, 0.7),
+      //         color2: Color.fromRGBO(1, 37, 84, 0.7),
+      //         width: MediaQuery.of(context).size.width * 0.4,
+      //         eventimgsrc: "assets/images/events/enigma.png",
+      //       ),
+      //     ),
+      //     Container(
+      //       padding: EdgeInsets.only(
+      //         left: MediaQuery.of(context).size.width * 0.4,
+      //         right: MediaQuery.of(context).size.width * 0.1,
+      //       ),
+      //       child: EventCard(
+      //         color1: Color.fromRGBO(2, 65, 125, 0.7),
+      //         color2: Color.fromRGBO(2, 28, 61, 0.7),
+      //         width: MediaQuery.of(context).size.width * 0.4,
+      //         eventimgsrc: "assets/images/events/web-weaver.png",
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
@@ -149,11 +254,13 @@ class EventCard extends StatelessWidget {
   final double width;
   final Color color1;
   final Color color2;
+  final String eventimgsrc;
 
   const EventCard({
     required this.width,
     required this.color1,
     required this.color2,
+    required this.eventimgsrc,
   });
 
   @override
@@ -168,6 +275,17 @@ class EventCard extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Center(
+            child: Image.asset(
+              eventimgsrc,
+              fit: BoxFit.cover,
+            ),
+          )
+        ],
       ),
     );
   }
@@ -191,38 +309,102 @@ class revCombinedEventCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.1,
-              right: MediaQuery.of(context).size.width * 0.45,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(1, 93, 180, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-            ),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  right: MediaQuery.of(context).size.width * 0.05,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(1, 93, 180, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/quiz.png",
+                ),
+              ),
+              Container(
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "Clash",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.4,
-              right: MediaQuery.of(context).size.width * 0.1,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(4, 90, 171, 0.7),
-              color2: Color.fromRGBO(1, 37, 84, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-            ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                // color: Colors.black,
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "RC",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  // right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(4, 90, 171, 0.7),
+                  color2: Color.fromRGBO(1, 37, 84, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/rc.png",
+                ),
+              ),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.1,
-              right: MediaQuery.of(context).size.width * 0.45,
-            ),
-            child: EventCard(
-              color1: Color.fromRGBO(2, 65, 125, 0.7),
-              color2: Color.fromRGBO(2, 28, 61, 0.7),
-              width: MediaQuery.of(context).size.width * 0.4,
-            ),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  // right: MediaQuery.of(context).size.width * 0.45,
+                ),
+                child: EventCard(
+                  color1: Color.fromRGBO(2, 65, 125, 0.7),
+                  color2: Color.fromRGBO(2, 28, 61, 0.7),
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  eventimgsrc: "assets/images/events/cretonix.png",
+                ),
+              ),
+              Container(
+                // color: Colors.black,
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.1),
+                height: 120,
+                width: 120,
+                child: Center(
+                  child: Text(
+                    "Cretonix",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

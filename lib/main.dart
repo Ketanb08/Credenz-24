@@ -1,5 +1,6 @@
 import 'package:credenz/menu_screen.dart';
 import 'package:credenz/nontech.dart';
+import 'package:credenz/splash.dart';
 import 'package:credenz/tech.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.transparent,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
